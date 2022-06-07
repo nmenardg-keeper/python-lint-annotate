@@ -104,7 +104,6 @@ runs:
 
     - name: Lint on Windows
       if: ${{ runner.os == 'Windows' }}
-      run: shopt -s globstar
       run: >
         ${{ github.action_path }}\entrypoint.sh
         '${{ inputs.python-root-list }}'
@@ -129,6 +128,7 @@ runs:
     - name: Lint on Linux
       if: ${{ runner.os == 'Linux' }}
       run: >
+        shopt -s globstar;
         ${{ github.action_path }}/entrypoint.sh
         '${{ inputs.python-root-list }}'
         ${{ inputs.use-pylint }}
